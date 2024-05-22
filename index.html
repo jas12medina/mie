@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miel Don Manuel</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <center><img src=".png.jpeg" alt="miel"  width="200px">
+    <h1>Miel</h1>
+<div>
+  <h2>Selecciona tus productos:</h2>
+  <form id="productForm">
+      <input type="checkbox" id="producto1" name="producto1" value="400">
+      <label for="producto1">Bote-Litro- $400</label><br>
+      <input type="checkbox" id="producto1" name="producto2" value="2500">
+      <label for="producto2">Bote-20 Litros- $2500</label><br>
+     
+      <input type="checkbox" id="producto1" name="producto3" value="250">
+      <label for="producto3">Penca-Por kilo- $250</label><br>
+      <input type="button" value="Calcular Total" onclick="calcularTotal()">
+  </form>
+</div>
+</center>
+<center>
+<div id="resultado" style="display:none;">
+  <h3>Total a Cobrar:</h3>
+  <p id="total"></p>
+</div>
+
+<script>
+  function calcularTotal() {
+      var total = 0;
+      var form = document.getElementById("productForm");
+      var checkboxes = form.elements;
+      
+      for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].type === "checkbox" && checkboxes[i].checked) {
+              total += parseFloat(checkboxes[i].value);
+          }
+      }
+
+      document.getElementById("total").innerHTML = "$" + total.toFixed(2);
+      document.getElementById("resultado").style.display = "block";
+  }
+</script>
+</center>
+</body>
+</html>
